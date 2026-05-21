@@ -1,0 +1,6 @@
+{
+  "name": "property-research-tool",
+  "version": "1.0.0",
+  "description": "Domain.com.au property research tool with Claude",
+  "engines": { "node": "18.x" }
+}
