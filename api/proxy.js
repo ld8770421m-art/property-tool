@@ -4,13 +4,17 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  const { path, ...restQuery } = req.query;
+  const { path, mode, ...restQuery } = req.query;
   if (!path) return res.status(400).json({ error: 'Missing path' });
 
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ error: 'Missing token' });
 
-  const domainUrl = `https://api.domain.com.au/${path}`;
+  const baseUrl = mode === 'sandbox'
+    ? 'https://api.domain.com.au/sandbox'
+    : 'https://api.domain.com.au';
+
+  const domainUrl = `${baseUrl}/${path}`;
   const queryString = new URLSearchParams(restQuery).toString();
   const fullUrl = queryString ? `${domainUrl}?${queryString}` : domainUrl;
 
