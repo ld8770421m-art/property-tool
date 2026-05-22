@@ -4,17 +4,17 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  const { path } = req.query;
+  const { path, ...restQuery } = req.query;
   if (!path) return res.status(400).json({ error: 'Missing path' });
 
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ error: 'Missing token' });
 
-  const domainUrl = `https://api.domain.com.au/${Array.isArray(path) ? path.join('/') : path}`;
-  const queryString = new URLSearchParams(
-    Object.fromEntries(Object.entries(req.query).filter(([k]) => k !== 'path'))
-  ).toString();
+  const domainUrl = `https://api.domain.com.au/${path}`;
+  const queryString = new URLSearchParams(restQuery).toString();
   const fullUrl = queryString ? `${domainUrl}?${queryString}` : domainUrl;
+
+  console.log('Proxying:', req.method, fullUrl);
 
   try {
     const response = await fetch(fullUrl, {
@@ -26,7 +26,11 @@ export default async function handler(req, res) {
       body: req.method === 'POST' ? JSON.stringify(req.body) : undefined
     });
 
-    const data = await response.json();
+    let data;
+    const text = await response.text();
+    try { data = JSON.parse(text); } catch { data = { raw: text }; }
+
+    console.log('Domain response:', response.status, text.substring(0, 200));
     res.status(response.status).json(data);
   } catch (e) {
     res.status(500).json({ error: 'Proxy error: ' + e.message });

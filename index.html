@@ -314,7 +314,7 @@
     el.innerHTML = '<div class="loading"><span class="spinner"></span>Fetching insights...</div>';
 
     try {
-      const url = proxyUrl(`v2/demographics/${encodeURIComponent(suburb)}/${state}/insights`, { propertyCategory: category });
+      const url = proxyUrl(`v2/demographics/${suburb}/${state}/insights`, { propertyCategory: category });
       const res = await fetch(url, { headers: authHeaders() });
       if (!res.ok) throw new Error('API error ' + res.status + ' — insights may require a higher API tier');
       const data = await res.json();
