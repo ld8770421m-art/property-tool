@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': `Basic ${creds}`
       },
-      body: 'grant_type=client_credentials&scope=api_listings_write api_listings_read'
+      body: 'grant_type=client_credentialsgrant_type=client_credentials&scope=api_listings_write api_listings_readscope=api_listings_read api_properties_read api_demographics_read'
     });
 
     const data = await response.json();
