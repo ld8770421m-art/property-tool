@@ -1,0 +1,31 @@
+[33mcommit 6345ad02a92cc78619c940284eab55798144a50f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: ld8770421m-art <ld8770421m@gmail.com>
+Date:   Sat May 23 15:54:19 2026 +0930
+
+    Undo last change..
+
+[33mcommit d501503efa9e3b76e37f5e2512b58b877e7e38c9[m
+Author: ld8770421m-art <ld8770421m@gmail.com>
+Date:   Sat May 23 08:58:49 2026 +0930
+
+    Switch to sandbox mode
+
+[33mcommit 91e6d0f0ad9d1a49726b4ecafde37d458bbf3c9d[m
+Author: ld8770421m-art <ld8770421m@gmail.com>
+Date:   Sat May 23 08:30:38 2026 +0930
+
+    Edit proxy and index
+
+[33mcommit 25d8694d58665a5f966e9300e4b12ca7e2d0826e[m
+Author: ld8770421m-art <ld8770421m@gmail.com>
+Date:   Thu May 21 17:51:16 2026 +0930
+
+    Update package.json
+
+[33mcommit eb4fba7756f8def006a4f5e21be5a2eddbcd5d22[m
+Author: ld8770421m-art <ld8770421m@gmail.com>
+Date:   Thu May 21 15:18:31 2026 +0930
+
+    First commit
+    
+    Vercel
